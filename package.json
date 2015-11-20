@@ -1,0 +1,25 @@
+{
+  "name": "node.day1.chatty",
+  "version": "1.0.0",
+  "description": "A simple messaging/chat server and client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SJTreadway/Chatty-Node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SJTreadway/Chatty-Node/issues"
+  },
+  "homepage": "https://github.com/SJTreadway/Chatty-Node#readme"
+}
