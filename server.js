@@ -1,23 +1,16 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-app.use(bodyParser.json());
+var cors = require('cors');
 
 app.listen(8800);
-var messages = ['hello', 'hi', 'hey', 'roll tide'];
+var messages = [];
+
+app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', function(req, res) {
-  res.status(200)
-  .set({
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'OPTIONS, GET, POST',
-    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-    'X-XSS-Protection': '1; mode=block',
-    'X-Frame-Options': 'SAMEORIGIN',
-    'Content-Security-Policy': "default-src 'self' devmountain.github.io"
-  })
-  .send(JSON.stringify(messages));
+  res.json(messages)
 });
 
 app.post('/', function(req, res) {
@@ -25,24 +18,9 @@ app.post('/', function(req, res) {
     message: req.body.message,
     time: new Date(),
   });
-  res.status(200)
-    .set({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'OPTIONS, GET, POST',
-      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-      'X-XSS-Protection': '1; mode=block',
-      'X-Frame-Options': 'SAMEORIGIN',
-      'Content-Security-Policy': "default-src 'self' devmountain.github.io"
-    }).send(JSON.stringify(messages))
+  res.json(messages)
 });
 
 app.options('/', function(req, res) {
-  res.status(200)
-    .set({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'OPTIONS, GET, POST',
-      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-    })
-    .end();
+  res.end()
 });
